@@ -1,0 +1,470 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'cols.css';
+@import 'reset.css';
+.box-shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.box-white {
+    background-color: white
+}
+
+html,
+body,
+material-app,
+mat-sidenav-container,
+.my-content,
+app-root {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif; */
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+td,
+th {
+    padding: 0;
+    white-space: nowrap;
+}
+
+.btn-30,
+sat-datepicker-toggle>button,
+mat-datepicker-toggle>button {
+    width: 30px!important;
+    height: 30px!important;
+    line-height: 30px!important;
+}
+
+.btn-30 .mat-icon,
+.icon-18,
+sat-datepicker-toggle>button .mat-icon,
+sat-datepicker-toggle>button svg,
+mat-datepicker-toggle>button .mat-icon,
+mat-datepicker-toggle>button svg {
+    font-size: 18px!important;
+    height: 18px!important;
+    width: 18px!important;
+    line-height: 18px!important;
+}
+
+.panelClasstables .mat-menu-content {
+    padding: 0!important;
+    min-width: 200px;
+}
+
+.panelClasstables .mat-list-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-tables {
+    border-top: 4px solid #b1dcfb!important;
+    padding: 0!important;
+    margin-bottom: 15px;
+}
+
+.search-tables {
+    float: right;
+}
+
+.search-tables>div {
+    display: flex;
+    align-items: center;
+}
+
+.search-tables mat-form-field {
+    margin-bottom: 0;
+}
+
+.card-tables mat-card-header {
+    align-items: center;
+    display: flex;
+    padding: 10px 15px!important;
+}
+
+.card-tables mat-card-header>div:first-child {
+    display: none;
+}
+
+.card-tables mat-card-header>div:nth-child(2) {
+    flex: 1;
+}
+
+.card-tables mat-card-content {
+    padding: 0;
+    margin: 0px 0px -1px 0px;
+}
+
+.card-tables mat-card-footer {
+    margin: 0;
+    padding: 5px 15px!important;
+}
+
+.card-tables [sticky-bottom] {
+    position: sticky;
+    bottom: 0;
+    border-top: 1px solid #eee;
+    background: white;
+    z-index: 4;
+}
+
+.group-btn {
+    display: flex;
+}
+
+.btn-icon {
+    width: 30px!important;
+    height: 30px!important;
+    line-height: 30px!important;
+}
+
+.btn-icon mat-icon {
+    font-size: 18px;
+    color: rgba(0, 0, 0, .54)!important;
+}
+
+.fixed-action-btn {
+    position: fixed;
+    bottom: 45px;
+    right: 24px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 997;
+}
+
+.matmenuNote {
+    padding: 15px;
+    min-width: 300px!important;
+}
+
+.imagesThumb input[type='file'] {
+    display: none;
+}
+
+.imagesThumb>div {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border: 1px dashed rgb(220, 222, 227);
+    overflow: hidden;
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+.imagesThumb>div img {
+    height: 100%;
+}
+
+.imagesThumb>div span.del {
+    position: absolute;
+    right: 0;
+    top: 0;
+    /*padding: 5px 10px;*/
+    cursor: pointer;
+}
+
+.imagesThumb>div span.change,
+.imagesThumb>div span.add {
+    position: absolute;
+    left: calc(50% - 15px);
+    top: calc(50% - 15px);
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.tabfiltertext .mat-tab-labels {
+    display: flex;
+}
+
+.mat-tab-label {
+    min-width: auto!important;
+    padding: 0 15px!important;
+    flex: 1;
+    height: 40px!important;
+}
+
+.mat-expansion-panel-body {
+    padding: 0!important
+}
+
+[tables] td:not(.border-none) {
+    white-space: initial;
+}
+
+.animate_start {
+    animation-duration: 0.7s;
+    animation-fill-mode: both;
+    transition-timing-function: cubic-bezier(.78, .13, .15, .86);
+}
+
+.animate_afc.animate_start {
+    animation-name: afc;
+    opacity: 1;
+}
+
+.animate_afc {
+    opacity: 0;
+}
+
+@keyframes afc {
+    0% {
+        opacity: 0;
+        transform: scale(.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* css mobile */
+
+@media (max-width:768px) {
+    .mat-sidenav-content {
+        margin-left: 0!important;
+    }
+    /* .mat-sidenav {
+        margin-top: 70px
+    } */
+}
+
+.custom-modalbox>mat-dialog-container {
+    padding: 0px;
+}
+
+.cdk-overlay-dark-backdrop {
+    background: #000000c7;
+}
+
+body>app-root>app-layout>mat-sidenav-container>mat-sidenav-content>section>app-dashboard>div>div>div:nth-child(3)>mat-card>mat-card-content>mat-progress-spinner {
+    width: 100% !important;
+    height: 140px !important;
+}
+
+body>app-root>app-layout>mat-sidenav-container>mat-sidenav-content>section>app-dashboard>div>div>div:nth-child(3)>mat-card>mat-card-content>mat-progress-spinner>svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.btn-30,
+sat-datepicker-toggle>button,
+mat-datepicker-toggle>button {
+    width: 30px!important;
+    height: 30px!important;
+    line-height: 30px!important;
+}
+
+.btn-30 .mat-icon,
+.icon-18,
+sat-datepicker-toggle>button .mat-icon,
+sat-datepicker-toggle>button svg,
+mat-datepicker-toggle>button .mat-icon,
+mat-datepicker-toggle>button svg {
+    font-size: 18px!important;
+    height: 18px!important;
+    width: 18px!important;
+    line-height: 18px!important;
+}
+
+#mat-tab-content-0-2>div>app-daily>div>div>ngx-charts-line-chart>ngx-charts-chart>div>svg>g>g>g:nth-child(2)>g.ng-tns-c22-1.ng-tns-c24-7>g>rect.tooltip-area {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    white-space: inherit;
+}
+
+button[disabled] {
+    color: rgba(0, 0, 0, .26)!important;
+    background-color: transparent!important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(0, 0, 0, .3);
+    border: 5px solid transparent;
+    border-radius: 10px;
+    min-height: 20px;
+    min-width: 20px;
+    height: 5px;
+    width: 5px;
+}
+
+ ::-webkit-scrollbar {
+    height: 15px;
+    width: 15px;
+    background: transparent;
+}
+
+ ::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+    background-color: transparent!important
+}
+
+button:focus {
+    box-shadow: none;
+    outline: none !important;
+}
+
+
+/* CSS mat-from field */
+
+[h40] {
+    height: 39px!important;
+}
+
+.mat-form-field {
+    margin-bottom: 15px;
+}
+
+.mat-form-field:not(.mat-form-field-appearance-outline) .mat-form-field-label-wrapper {
+    display: none;
+}
+
+.mat-form-field .mat-form-field-wrapper,
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin-bottom: 0px!important;
+    padding-bottom: 0!important;
+}
+
+.mat-form-field .mat-form-field-infix,
+.mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0px 0px;
+    min-height: 36px;
+    color: #3c4043;
+    border-top: 0!important;
+    width: auto!important;
+}
+
+.mat-form-field .mat-form-field-prefix {
+    top: -2px!important;
+    padding-right: 5px!important;
+}
+
+.mat-form-field:not(.mat-form-field-appearance-outline) .mat-form-field-flex {
+    border-radius: 3px;
+    background-color: #f1f3f4;
+}
+
+.mat-form-field.full,
+.mat-form-field-appearance-outline.full,
+.full>mat-form-field.mat-form-field {
+    width: 100%;
+}
+
+.mat-form-field .mat-form-field-underline {
+    background-color: transparent!important;
+    top: 100%!important;
+}
+
+.mat-form-field input,
+.mat-form-field .mat-select-value,
+.mat-form-field textarea {
+    /* padding: 0px 10px; */
+    margin: 0;
+}
+
+.mat-form-field-infix {
+    align-items: center;
+    display: flex!important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0!important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-label {
+    font-size: 14px;
+    top: 2.5em!important;
+    margin-top: -0.9em;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label,
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    -webkit-transform: translateY(-1.1em) scale(.75);
+    transform: translateY(-1.1em) scale(.75);
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(-2%);
+}
+
+mat-option.mat-option:not([null-option]),
+.h40 {
+    height: 39px!important;
+    line-height: 39px!important;
+}
+
+mat-input-container.mat-input-focused label {
+    display: none
+}
+
+.mat-form-field .mat-input-element {
+    font-size: 14px!important;
+}
+
+.mat-form-field textarea.mat-input-element::placeholder,
+.mat-form-field input.mat-input-element::placeholder,
+.mat-form-field .mat-select-value .mat-select-placeholder {
+    color: #616161!important;
+    -webkit-text-fill-color: #616161!important;
+    transition: initial!important;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.mat-form-field textarea {
+    padding: 10px 0px!important;
+}
+
+.mat-form-field .mat-form-field-subscript-wrapper {
+    top: 100%;
+    margin-top: 3px!important;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+    justify-content: space-between;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+    white-space: inherit;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}

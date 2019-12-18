@@ -1,0 +1,30 @@
+.open_account{
+    color: #002395;
+    font-size: 20px;
+    font-weight: 600;
+}
+.box-body {
+    padding: 1.25rem 1.5rem;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+.py-40 {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+.open_account_type{
+    color: #002395;
+    font-size: 16px;
+    font-weight: 600;
+}
+.content{
+    padding: 16px;
+    border-radius: 5px;
+    background-color: #f8f9fd;
+}
+.title{
+    color: #002395;
+    font-size: 17px;
+    font-weight: 600;
+}

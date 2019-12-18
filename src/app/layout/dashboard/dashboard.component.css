@@ -1,0 +1,11 @@
+.body{
+    background: -webkit-linear-gradient(to top right, rgba(1, 177, 236, 1) 19%, rgba(30, 64, 154, 1) 80%);
+    background: linear-gradient(to top right, rgba(1, 177, 236, 1) 19%, rgba(30, 64, 154, 1) 80%);
+    position: relative;
+    padding: 1.25rem 1.5rem;
+}
+.btn-view{
+    background: -webkit-linear-gradient(to top right, rgba(1, 177, 236, 1) 19%, rgba(30, 64, 154, 1) 80%);
+    background: linear-gradient(to top right, rgba(1, 177, 236, 1) 19%, rgba(30, 64, 154, 1) 80%);
+    position: relative;
+}

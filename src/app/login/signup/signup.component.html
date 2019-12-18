@@ -1,0 +1,136 @@
+<div class="signup-main">
+    <div class="align-items-center d-flex justify-content-end language">
+        <a (click)="changeLanguage('vi')" class="text-white mr-3">
+            <img src="../../../assets//icon/icon_vietnam.png" alt="VietNam" class="mr-2" width="20px" height="20px">
+            <span translate>language.vn</span>
+        </a>
+
+        <a (click)="changeLanguage('en')" class="text-white">
+            <img src="../../../assets//icon/en.jpg" alt="English" class="mr-2" width="20px" height="20px">
+            <span translate>language.en</span>
+        </a>
+    </div>
+    <div class="signup-box">
+        <ng-container *ngIf="pageType; then templatesignupSuccess; else templatesignup">
+        </ng-container>
+    </div>
+</div>
+<ng-template #templatesignup>
+    <mat-card [formGroup]="fm">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoad" class="mb-3"></mat-progress-bar>
+
+        <div class="d-md-flex">
+            <div style="flex:1">
+                <div class="d-flex">
+                    <mat-form-field appearance="outline" class="full">
+                        <mat-label translate>signup.yourName</mat-label>
+                        <input matInput autofocus autocomplete="off" formControlName="user_name" required>
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="outline" class="full no-margin">
+                    <mat-label translate>signup.contact_email</mat-label>
+                    <input matInput (keyup.enter)="submitfm($event)" autocomplete="off" formControlName="contact_email"
+                        required>
+                </mat-form-field>
+                <mat-error style="font-weight: normal;"
+                    *ngIf="fm.get('contact_email').invalid && fm.get('contact_email').touched">
+                    {{'message.validEmail'|translate}}</mat-error>
+                <div class="d-flex mt-15">
+                    <div style="flex: 1">
+                        <mat-form-field appearance="outline" class="full no-margin">
+                            <mat-label translate>signup.password</mat-label>
+                            <input matInput autocomplete="off" [attr.type]="hide ? 'password' : 'text'"
+                                formControlName="password" required>
+                            <mat-icon matSuffix style="cursor: pointer" class="icon-18" (click)="hide = !hide">
+                                {{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                        </mat-form-field>
+                        <mat-error class="fz-13" style="font-weight: normal;"
+                            *ngIf="fm.get('password').invalid && fm.get('password').touched">
+                            {{'message.minLenghtPassword'|translate}}</mat-error>
+                    </div>
+                    <div style="width:180px" class="ml-15">
+                        <mat-form-field appearance="outline" class="full no-margin">
+                            <mat-label translate>signup.confirm</mat-label>
+                            <input matInput (focus)="onCompare()" autocomplete="off"
+                                [attr.type]="hide ? 'password' : 'text'" (keyup)="onCompare()" [(ngModel)]="confirm"
+                                [ngModelOptions]="{standalone: true}" required>
+                        </mat-form-field>
+                        <mat-error class="fz-13" style="font-weight: normal;"
+                            *ngIf="notMatch&&confirm && confirm !=this.fm.value.password">
+                            {{'message.notMatchPassword'|translate}}</mat-error>
+                    </div>
+                </div>
+                <div class="d-flex mt-15">
+                    <div>
+                        <mat-form-field appearance="outline" class="full">
+                            <mat-label translate>signup.contact_phone</mat-label>
+                            <input matInput autocomplete="off" formControlName="contact_phone" required>
+                        </mat-form-field>
+                    </div>
+                    <div style="margin-left : 15px">
+                        <mat-form-field appearance="outline">
+                            <mat-label translate>signup.brithday</mat-label>
+                            <input matInput [matDatepicker]="birth_date" formControlName="birth_date">
+                            <mat-datepicker-toggle matSuffix [for]="birth_date"></mat-datepicker-toggle>
+                            <mat-datepicker #birth_date></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="align-items-center d-flex">
+                    <label class="mr-4" translate>signup.sex.title</label>
+                    <mat-radio-group formControlName="sex" color="primary">
+                        <mat-radio-button *ngFor="let item of sex.type" (click)="skip=item.id" [value]='item.id'
+                            class="mr-4">
+                            <span translate>{{item.name}}</span>
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <mat-form-field appearance="outline" class="full no-margin">
+                    <mat-label translate>signup.contact_address</mat-label>
+                    <textarea matInput matTextareaAutosize minRows="1" formControlName="contact_address"></textarea>
+                </mat-form-field>
+                <mat-card-actions class="no-margin mt-10">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button mat-button [routerLink]="[ '/signin']">
+                            <span translate>signup.singin</span>
+                        </button>
+                        <button mat-raised-button type="submit" color="primary" [disabled]="!fm.valid || notMatch"
+                            (click)="onSubmit()">
+                            <span translate>btn.signup</span>
+                        </button>
+                    </div>
+                </mat-card-actions>
+            </div>
+            <div style="width: 300px" class="d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                    <div>
+                        <img class="w-50 mb-15" src="https://online.acb.com.vn/acbib/img/logo.jpg">
+                    </div>
+                    <img src="../../../assets/icon/protection.png">
+                    <div class="text-center text-warning" translate>signup.welcome</div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</ng-template>
+<ng-template #templatesignupSuccess>
+    <mat-card>
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoad"></mat-progress-bar>
+
+        <mat-card-title class="text-center">
+            <mat-icon class="text-success" style="font-size: 2em;">done</mat-icon>
+        </mat-card-title>
+
+        <mat-card-content>
+            <div class="text-center" style="color:#F44336;" translate>signup.titleSuccess</div>
+        </mat-card-content>
+
+        <div class="text-center">
+            <button mat-flat-button type="submit" [routerLink]="[ '../']" style="padding-right: 5px;"
+                class="bg-success text-white">
+                <span translate>btn.continue</span>
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
+    </mat-card>
+</ng-template>

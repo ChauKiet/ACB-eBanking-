@@ -1,0 +1,90 @@
+<form [formGroup]="fm" *ngIf="fm" (submit)='$event.stopPropagation()'>
+    <div translate> customer.titleEdit</div>
+    <mat-dialog-content class="pt-3">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.first_name</mat-label>
+                    <input matInput formControlName="first_name" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.last_name</mat-label>
+                    <input matInput formControlName="last_name" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.contact_phone</mat-label>
+                    <input matInput formControlName="contact_phone" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.contact_email</mat-label>
+                    <input matInput formControlName="contact_email" required>
+                </mat-form-field>
+            </div>
+            <div class="col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.contact_address</mat-label>
+                    <input matInput formControlName="contact_address" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.idno</mat-label>
+                    <input matInput formControlName="idno" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.idno_issued_date</mat-label>
+                    <input matInput [matDatepicker]="idno_issued_date" formControlName="idno_issued_date" required>
+                    <mat-datepicker-toggle matSuffix [for]="idno_issued_date"></mat-datepicker-toggle>
+                    <mat-datepicker #idno_issued_date></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 col-12">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.birth_date</mat-label>
+                    <input matInput [matDatepicker]="birth_date" formControlName="birth_date" required>
+                    <mat-datepicker-toggle matSuffix [for]="birth_date"></mat-datepicker-toggle>
+                    <mat-datepicker #birth_date></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="align-items-center col-12 col-md-6 d-flex justify-content-between">
+                <label class="mr-2" translate>customer.sex.title</label>
+                <mat-radio-group formControlName="sex" color="primary">
+                    <mat-radio-button *ngFor="let item of sex.type" (click)="skip=item.id" [value]='item.id' class="mr-1">
+                        <span translate> {{item.name}}</span>
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <div class="col-12" style="display: none">
+                <mat-form-field appearance="outline" class="w-100">
+                    <mat-label translate>customer.password</mat-label>
+                    <input autocomplete="off" matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                    <mat-icon class="icon-18" matSuffix style="cursor: pointer;" (click)="hide = !hide">
+                        <span>{{hide ? 'visibility' : 'visibility_off'}}</span>
+                    </mat-icon>
+                </mat-form-field>
+            </div>
+
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions style="display: flex;align-items: center;justify-content: space-between">
+        <mat-slide-toggle class="pull-left" color="primary" formControlName="status">
+            <span translate>btn.status</span>
+        </mat-slide-toggle>
+        <div class="flex-auto pull-right">
+            <button mat-button keyboard-close type="button" mat-dialog-close class="bg-secondary text-white">
+                <span translate>btn.close</span>
+            </button>
+            <button mat-raised-button keyboard-save [disabled]="!fm.valid" (click)="onSubmit()" class="text-white bg-success">
+                <span translate>btn.save</span>
+            </button>
+        </div>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,385 @@
+<mat-horizontal-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <mat-card class="box pull-up">
+                <mat-card-content class="box-body py-40">
+                    <div class="title_add pb-3">
+                        <div class="add">
+                            <p class="m-0 open_account" translate>openaccount.knowabout</p>
+                        </div>
+                    </div>
+                    <div class="align-items-center d-flex justify-content-start title_name">
+                        <label class="mr-4" translate>openaccount.appellation</label>
+                        <mat-radio-group formControlName="name_type" color="primary">
+                            <mat-radio-button *ngFor="let item of list.type" (click)="skip=item.id" [value]='item.id'
+                                class="mr-4">
+                                <span translate>{{item.name}}</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-12">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.firts_name</mat-label>
+                                <input matInput formControlName="firts_name" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.last_name</mat-label>
+                                <input matInput formControlName="last_name" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.phone</mat-label>
+                                <input matInput formControlName="contact_phone" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.email</mat-label>
+                                <input matInput formControlName="contact_email" required>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button mat-raised-button matStepperNext color="primary">
+                            <span translate>btn.continue</span>
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <mat-card class="box pull-up">
+                <mat-card-content class="box-body py-40">
+                    <div class="title_add pb-3">
+                        <div class="add d-flex">
+                            <h4 style="color: #002395;-webkit-text-stroke: thick;" class="text-uppercase">
+                                {{firstFormGroup.value.firts_name +" "+firstFormGroup.value.last_name}}</h4>
+                            <h6 class="m-0 open_account" style="line-height: 1.5;" translate>openaccount.hey</h6>
+                        </div>
+                        <p class="m-0 open_account" translate>openaccount.moredetail</p>
+                    </div>
+                    <div class="">
+                        <label class="mr-4 open_account_type" style="display: block;"
+                            translate>openaccount.type_document</label>
+                        <mat-radio-group formControlName="papers_type" color="primary">
+                            <mat-radio-button *ngFor="let item of papers.type" (click)="skip=item.id" [value]='item.id'
+                                class="mr-4">
+                                <span translate>{{item.name}}</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.ID</mat-label>
+                                <input matInput formControlName="number_papers" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.date_create</mat-label>
+                                <input matInput [matDatepicker]="date_create" formControlName="date_create" required>
+                                <mat-datepicker-toggle matSuffix [for]="date_create"></mat-datepicker-toggle>
+                                <mat-datepicker #date_create></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.address_create</mat-label>
+                                <input matInput formControlName="address_create" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.brithday</mat-label>
+                                <input matInput [matDatepicker]="brithday" formControlName="brithday" required>
+                                <mat-datepicker-toggle matSuffix [for]="brithday"></mat-datepicker-toggle>
+                                <mat-datepicker #brithday></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.address_brithday</mat-label>
+                                <input matInput formControlName="address_brithday" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.nationality</mat-label>
+                                <input matInput formControlName="nationality" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <p class="open_account m-0-" translate>openaccount.address</p>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.provincial</mat-label>
+                                <input matInput formControlName="provincial" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.district</mat-label>
+                                <input matInput formControlName="district" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.commune</mat-label>
+                                <input matInput formControlName="commune" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.addres</mat-label>
+                                <input matInput formControlName="addres" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-8">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>openaccount.street</mat-label>
+                                <input matInput formControlName="street" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 align-items-center d-flex justify-content-between w-100">
+                            <div class="text-left">
+                                <button mat-raised-button matStepperPrevious color="primary">
+                                    <span translate>btn.back</span>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <button mat-raised-button matStepperNext color="primary">
+                                    <span translate>btn.continue</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+            <mat-card class="box pull-up">
+                <mat-card-content class="box-body py-40">
+                    <div class="title_add pb-3">
+                        <p class="m-0 open_account" translate>openaccount.done</p>
+                    </div>
+                    <div class="">
+                        <label class="mr-4 open_account_type" style="display: block;"
+                            translate>openaccount.type_account</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <mat-radio-group formControlName="account_type" color="primary">
+                                <mat-radio-button *ngFor="let item of account_type.type" (click)="skip=item.id"
+                                    [value]='item.id' class="mr-4">
+                                    <span translate>{{item.name}}</span>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="col-12 content" *ngIf="skip==1">
+                            <div class="data">
+                                <p class="title">Phù hợp khách hàng kinh doanh, giao dịch lớn và thường xuyên
+                                </p>
+                                <p>- Ưu tiên phục vụ tại quầy</p>
+                                <p>- Miễn phí rút tiền qua ATM</p>
+                                <p>- Miễn phí thường niên năm đầu thẻ Visa Platinum Debit</p>
+                                <p>- SDBQ tối thiểu: 30 triệu đồng/tháng</p>
+                            </div>
+                        </div>
+                        <div class="col-12 content" *ngIf="skip==2">
+                            <div class="data">
+                                <p class="title">Phù hợp khách hàng giao dịch online thường xuyên</p>
+                                <p>- Miễn phí chuyển tiền online</p>
+                                <p>- Miễn phí rút tiền tại ACB ATM</p>
+                                <p>- Miễn phí thường niên năm đầu thẻ ghi nợ nội địa & quốc tế.</p>
+                                <p>- SDBQ tối thiểu: 5 triệu đồng/tháng</p>
+                            </div>
+                        </div>
+                        <div class="col-12 content" *ngIf="skip==3">
+                            <div class="data">
+                                <p class="title">Phù hợp khách hàng có nhu cầu giao dịch cơ bản</p>
+                                <p>- Giao dịch đa kênh: CN/PGD ACB, online, CC247…</p>
+                                <p>- Miễn phí dịch vụ thanh toán hóa đơn</p>
+                                <p>- Liên kết thẻ ghi nợ</p>
+                                <p>- Thanh toán tại Việt Nam và nước ngoài</p>
+                                <p>- SDBQ tối thiểu: 500.000đ/tháng</p>
+                            </div>
+                        </div>
+                        <div class="col-12 content" *ngIf="skip==4">
+                            <div class="data">
+                                <p class="title">Phù hợp khách hàng có nhu cầu nhận lương</p>
+                                <p>- Giao dịch đa kênh: CN/PGD ACB, online, CC247…</p>
+                                <p>- Miễn phí rút tiền tại ATM ACB năm đầu.</p>
+                                <p>- Miễn phí thường niên thẻ ACB2GO & JCB Debit</p>
+                                <p>- SDBQ tối thiểu: Miễn phí năm đầu (các năm tiếp theo 100.000đ/tháng)</p>
+                            </div>
+                        </div>
+                        <div class="col-12 content" *ngIf="skip==5">
+                            <div class="data">
+                                <p class="title">Bạn là Học sinh/Sinh viên? Đây là sản phẩm dành riêng cho Bạn:
+                                </p>
+                                <p>- Miễn phí quản lý tài khoản 2 năm đầu tiên.</p>
+                                <p>- Giao dịch đa kênh</p>
+                                <p>- Kết nối ví MoMo</p>
+                                <p>- Miễn phí thường niên thẻ ACB2GO 2 năm đầu</p>
+                                <p>- Điều kiện: Bạn cần có thẻ SV-HS hoặc giấy xác nhận của nhà trường</p>
+                            </div>
+                        </div>
+                        <div class="col-12 content" *ngIf="skip==6">
+                            <div class="data">
+                                <p class="title">Bạn chưa xác định được loại tài khoản đáp ứng nhu cầu? Hãy
+                                    tiếp tục hoàn thành đơn mở tài khoản này và chúng tôi sẽ tư vấn Bạn
+                                    loại tài khoản phù hợp nhất.</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <mat-checkbox formControlName="inter_banking" color="primary"><span
+                                    translate>openaccount.internet_banking</span></mat-checkbox>
+                        </div>
+                        <div class="col-12">
+                            <mat-checkbox formControlName="sms" color="primary"><span
+                                    translate>openaccount.service_sms</span></mat-checkbox>
+                        </div>
+                        <div class="col-12 align-items-center d-flex justify-content-between w-100">
+                            <div class="text-left">
+                                <button mat-raised-button matStepperPrevious color="primary">
+                                    <span translate>btn.back</span>
+                                </button>
+                            </div>
+                            <div class="text-right">
+                                <button mat-raised-button matStepperNext color="primary" (click)="onSubmit()">
+                                    <span translate>btn.continue</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-step>
+    <mat-step>
+        <mat-card class="box pull-up">
+            <mat-card-content class="box-body py-40">
+                <div class="title_add pb-3">
+                    <p class="m-0 open_account" translate>openaccount.confirm</p>
+                </div>
+                <mat-card class="mt-2 mb-2">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 col-12 text-left">
+                                <p translate>openaccount.appellation</p>
+                                <p translate>openaccount.full_name</p>
+                                <p translate>openaccount.nationality</p>
+                                <p translate>openaccount.brithday</p>
+                                <p translate>openaccount.address_brithday</p>
+                            </div>
+                            <div class="col-md-6 col-12 text-right">
+                                <p translate>
+                                    {{(firstFormGroup.value.name_type==1)?"openaccount.brother":"openaccount.sister"}}
+                                </p>
+                                <p>{{firstFormGroup.value.firts_name+" "+firstFormGroup.value.last_name}}</p>
+                                <p>{{secondFormGroup.value.nationality}}</p>
+                                <p>{{secondFormGroup.value.brithday| date:'dd/MM/yyyy'}}</p>
+                                <p>{{secondFormGroup.value.address_brithday}}</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="mt-2 mb-2">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 col-12 text-left">
+                                <p translate>openaccount.email</p>
+                                <p translate>openaccount.phone</p>
+                            </div>
+                            <div class="col-md-6 col-12 text-right">
+                                <p>{{firstFormGroup.value.contact_email}}</p>
+                                <p>{{firstFormGroup.value.contact_phone}}</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="mt-2 mb-2">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 col-12 text-left">
+                                <p translate>openaccount.type_document</p>
+                                <p translate>openaccount.ID</p>
+                                <p translate>openaccount.date_create</p>
+                                <p translate>openaccount.address_create</p>
+                            </div>
+                            <div class="col-md-6 col-12 text-right">
+                                <p translate>
+                                    {{(secondFormGroup.value.papers_type==1)?"openaccount.identification.1":(secondFormGroup.value.papers_type==2)?"openaccount.identification.2":"openaccount.identification.3"}}
+                                </p>
+                                <p>{{secondFormGroup.value.number_papers}}</p>
+                                <p>{{secondFormGroup.value.date_create| date:'dd/MM/yyyy'}}</p>
+                                <p>{{secondFormGroup.value.address_create}}</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="mt-2 mb-2">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 col-12 text-left">
+                                <p translate>openaccount.permanent</p>
+                            </div>
+                            <div class="col-md-6 col-12 text-right">
+                                <p>{{secondFormGroup.value.addres+","+secondFormGroup.value.street+","
+                                    +secondFormGroup.value.commune+","+secondFormGroup.value.district+","+secondFormGroup.value.provincial}}
+                                </p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="mt-2 mb-2">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 col-12 text-left">
+                                <p translate>openaccount.address</p>
+                            </div>
+                            <div class="col-md-6 col-12 text-right">
+                                <p>{{secondFormGroup.value.addres+","+secondFormGroup.value.street+","
+                                        +secondFormGroup.value.commune+","+secondFormGroup.value.district+","+secondFormGroup.value.provincial}}
+                                </p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card class="mt-2 mb-2">
+                    <mat-card-content>
+                        <div class="row">
+                            <div class="col-md-6 col-12 text-left">
+                                <p translate>openaccount.account_type</p>
+                                <p translate>openaccount.type_money</p>
+                                <p translate>openaccount.internet_banking</p>
+                                <p translate>openaccount.service_sms</p>
+                            </div>
+                            <div class="col-md-6 col-12 text-right">
+                                <p translate>
+                                    {{(thirdFormGroup.value.account_type==1)?"openaccount.type.1":(thirdFormGroup.value.account_type==2)?"openaccount.type.2":(thirdFormGroup.value.account_type==3)?"openaccount.type.3":(thirdFormGroup.value.account_type==4)?"openaccount.type.4":(thirdFormGroup.value.account_type==5)?"openaccount.type.5":"openaccount.type.6"}}
+                                </p>
+                                <p>VND</p>
+                                <p translate>{{(thirdFormGroup.value.inter_banking==true)?"openaccount.registered":""}}
+                                </p>
+                                <p translate>{{(thirdFormGroup.value.sms==true)?"openaccount.registered":""}}</p>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </mat-step>
+</mat-horizontal-stepper>

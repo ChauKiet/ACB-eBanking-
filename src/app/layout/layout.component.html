@@ -1,0 +1,13 @@
+<app-header (eventOpened)="eventOpened($event)"></app-header>
+<mat-sidenav-container style="height : calc(100% - 64px)">
+    <mat-sidenav #sidenav mode="side" [opened]="opened" style="width : 240px" class="box-shadow">
+        <app-asidebar></app-asidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <section>
+            <router-outlet></router-outlet>
+        </section>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+<app-footer></app-footer>

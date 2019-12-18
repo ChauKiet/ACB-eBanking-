@@ -1,0 +1,12 @@
+.navbar-fixed {
+    position: relative;
+    display: flex;
+    z-index: 99
+}
+.navbar-fixed nav{
+    padding: 8px 16px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }

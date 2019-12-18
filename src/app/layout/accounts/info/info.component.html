@@ -1,0 +1,95 @@
+<mat-card class="card-tables" style="border-radius: 3px;" *ngIf="listAccount&&listAccount!=''">
+    <mat-card-content mat-button>
+        <div class="account_info">
+            <h4 class="align-items-center d-flex justify-content-center text-center text-uppercase mt-3 mb-3">
+                <mat-icon class="btn-30 mr-3 text-success">account_circle</mat-icon>
+                <span translate>account.account_info</span>
+                <button class="ml-3" mat-icon-button (click)="Onshare()" matTooltipPosition="right" matTooltip="{{'account.share' | translate }}">
+                    <mat-icon class="btn-30" style="transform: rotate(180deg);">reply</mat-icon>
+                </button>
+            </h4>
+            <mat-nav-list role="list" class="p-10">
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.account_number</div>
+                    <div class="ml-1">{{bankinfo.accountNumber}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.referral_code</div>
+                    <div class="ml-1">{{listAccount.referralCode}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.bank_name</div>
+                    <div class="ml-1">{{bankinfo.bankName}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.swiftCode</div>
+                    <div class="ml-1">{{bankinfo.swiftCode}}</div>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+        <div class="account_detail">
+            <h4 class="align-items-center d-flex justify-content-center text-center text-uppercase mt-3 mb-3">
+                <mat-icon class="btn-30 mr-3 text-success">view_module</mat-icon>
+                <span translate>account.account_detail</span>
+            </h4>
+            <mat-nav-list role="list" class="p-0">
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.userName</div>
+                    <div class="ml-1">{{listAccount.userName}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.userEmail</div>
+                    <div class="ml-1">{{listAccount.userEmail}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.phoneNumber</div>
+                    <div class="ml-1">{{listAccount.phoneNumber}}</div>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+        <div class="personal_info">
+            <h4 class="align-items-center d-flex justify-content-center text-center text-uppercase mt-3 mb-3">
+                <mat-icon class="btn-30 mr-3 text-success">portrait</mat-icon>
+                <span translate>account.personal_info</span>
+            </h4>
+            <mat-nav-list role="list" class="p-0">
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.fullName</div>
+                    <div class="ml-1">{{listAccount.fullName}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.dateOfBirth</div>
+                    <div class="ml-1">{{listAccount.dateOfBirth}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.nationalId</div>
+                    <div class="ml-1">{{listAccount.nationalId}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.docIssueDate</div>
+                    <div class="ml-1">{{listAccount.docIssueDate}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.gender</div>
+                    <div class="ml-1">{{(listAccount.gender==1)?"Nam":"Nữ"}}</div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.address</div>
+                    <div class="ml-1">
+                        {{listAccount.address.addressName +','+listAccount.address.wardName+','+listAccount.address.distName+','+listAccount.address.cityName}}
+                    </div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.invite</div>
+                    <div class="ml-1">
+                        {{(translate.store.currentLang=='vi')?listAccount.invite.inviteVN:listAccount.invite.inviteEN}}
+                    </div>
+                </mat-list-item>
+                <mat-list-item role="listitem" style="border-bottom: 1px solid #ccc">
+                    <div translate>account.inviteLink</div>
+                    <div class="ml-1">{{listAccount.invite.inviteLink}}</div>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </mat-card-content>
+</mat-card>

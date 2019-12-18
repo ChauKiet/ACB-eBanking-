@@ -1,0 +1,136 @@
+<form [formGroup]="fm" *ngIf="fm" (submit)='$event.stopPropagation()'>
+    <mat-card>
+        <mat-card-content>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <mat-label class="mt-2 mb-3 title" translate>transfers.debitaccount</mat-label>
+                    <mat-form-field appearance="outline" class="full">
+                        <mat-label translate>transfers.chosedebitaccount</mat-label>
+                        <mat-select formControlName="money_account">
+                            <mat-option *ngFor="let items of money_account.type" [value]="items.id">
+                                {{items.value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-label class="mt-2 mb-3 title" translate>transfers.beneficiaryaccount</mat-label>
+                    <div class="align-items-center d-flex justify-content-start title_name">
+                        <mat-radio-group formControlName="beneficiary_type" color="primary">
+                            <mat-radio-button *ngFor="let item of list.type" (click)="skip=item.id" [value]='item.id'
+                                class="mr-4">
+                                <span translate>{{item.name}}</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <mat-form-field appearance="outline" class="full" *ngIf="fm.value.beneficiary_type==0">
+                        <mat-label translate>transfers.fromlist</mat-label>
+                        <mat-select formControlName="account_list">
+                            <mat-option *ngFor="let items of account_list.type" [value]="items.id">
+                                {{items.value}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100" *ngIf="fm.value.beneficiary_type==1">
+                        <mat-label translate>transfers.enteraccount</mat-label>
+                        <input matInput formControlName="account" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <mat-label class="mt-2 mb-3 title" translate>transfers.transferinformation</mat-label>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label translate>transfers.numbermoney</mat-label>
+                        <input matInput formControlName="money" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-form-field appearance="outline" class="full">
+                        <mat-label translate>transfers.numbermoneyword</mat-label>
+                        <textarea matInput autocomplete="off" formControlName="money_words"
+                            cdkTextareaAutosize></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label translate>transfers.transactionfee</mat-label>
+                        <input matInput formControlName="transaction_fee" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label translate>transfers.transactionfeeword</mat-label>
+                        <input matInput formControlName="transaction_fee_words" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-form-field appearance="outline" class="full">
+                        <mat-label translate>transfers.transactioncontent</mat-label>
+                        <textarea matInput autocomplete="off" formControlName="transaction_note"
+                            cdkTextareaAutosize></textarea>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label translate>transfers.referencenumber</mat-label>
+                        <input matInput formControlName="reference_number" required>
+                    </mat-form-field>
+                </div>
+                <div class="align-items-center col-12 col-md-6 d-flex justify-content-between">
+                    <mat-checkbox formControlName="send_email" color="primary">
+                        <span translate>transfers.receiveemail</span>
+                    </mat-checkbox>
+                    <mat-form-field appearance="outline" class="w-100 " style="margin-left: 20px;"
+                        *ngIf="fm.value.send_email==true">
+                        <mat-label translate>transfers.email</mat-label>
+                        <input matInput formControlName="results_email" required>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <mat-label class="mt-2 mb-3 title" translate>transfers.transfertime</mat-label>
+                    <div class="title_name">
+                        <mat-radio-group color="primary" formControlName="transaction_now">
+                            <mat-radio-button *ngFor="let item of date_list.type" (click)="skip=item.id"
+                                [value]='item.id' class="mr-4 d-block">
+                                <span translate>{{item.value}}</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                        <div *ngIf="fm.value.transaction_now==1">
+                            <mat-form-field appearance="outline" class="w-100">
+                                <mat-label translate>transfers.date</mat-label>
+                                <input matInput [matDatepicker]="transaction_date" formControlName="transaction_date"
+                                    required>
+                                <mat-datepicker-toggle matSuffix [for]="transaction_date"></mat-datepicker-toggle>
+                                <mat-datepicker #transaction_date></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <mat-label class="mt-2 mb-3 title" translate>transfers.authenticationmethod</mat-label>
+                    <mat-form-field appearance="outline" class="full">
+                        <mat-label translate>transfers.choosemethod</mat-label>
+                        <mat-select formControlName="authentication_method">
+                            <mat-option *ngFor="let items of method.type" [value]="items.id">
+                                <span translate>{{items.value}}</span>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-12">
+                    <div class="w-100">
+                        <button mat-raised-button color="primary" class="pull-right text-right text-white" keyboard-save
+                            [disabled]="!fm.valid" (click)="onSubmit()">
+                            <span translate>btn.transfer</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</form>

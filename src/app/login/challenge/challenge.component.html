@@ -1,0 +1,30 @@
+<form [formGroup]="fm" *ngIf="fm" (submit)='$event.stopPropagation()'>
+    <mat-dialog-content>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="title" translate>forgot.title</div>
+                <div class="des" translate>forgot.desc</div>
+            </div>
+            <div class="col-12 mt-3">
+                <mat-form-field appearance="outline" class="full">
+                    <mat-label translate> forgot.email</mat-label>
+                    <!-- <mat-icon color="accent" class="icon-18" >email</mat-icon> -->
+                    <input matInput autofocus (keyup.enter)="onSubmit" autocomplete="off"
+                        formControlName="contact_email" required>
+                </mat-form-field>
+            </div>
+
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <div class="align-items-center d-flex justify-content-between w-100">
+            <button mat-button keyboard-close type="button" mat-dialog-close class="bg-secondary text-white">
+                <span translate>btn.close</span>
+            </button>
+            <button mat-raised-button keyboard-save [disabled]="!fm.valid" (click)="onSubmit()"
+                class="text-white bg-success">
+                <span translate>btn.save</span>
+            </button>
+        </div>
+    </mat-dialog-actions>
+</form>

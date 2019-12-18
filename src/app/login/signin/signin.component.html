@@ -1,0 +1,103 @@
+<div class="login-main">
+    <div class="align-items-center d-flex justify-content-end language">
+        <a (click)="changeLanguage('vi')" class="text-white mr-3">
+            <img src="../../../assets//icon/icon_vietnam.png" alt="VietNam" class="mr-2" width="20px" height="20px">
+            <span translate>language.vn</span>
+        </a>
+
+        <a (click)="changeLanguage('en')" class="text-white">
+            <img src="../../../assets//icon/en.jpg" alt="English" class="mr-2" width="20px" height="20px">
+            <span translate>language.en</span>
+        </a>
+    </div>
+    <div class="login-box">
+        <ng-container *ngIf="pageType; then templateSigninPassword; else templateSigninEmail">
+        </ng-container>
+    </div>
+</div>
+<ng-template #templateSigninEmail>
+    <mat-card [formGroup]="fmUsername">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoad"></mat-progress-bar>
+        <mat-card-title class="text-center title-login-logo">
+            <img width="100px" src="https://online.acb.com.vn/acbib/img/logo.jpg">
+        </mat-card-title>
+        <mat-card-content>
+            <div class="title-login text-center" translate>login.titleLogin</div>
+            <div class="note-login text-center" translate>login.noteLogin</div>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-form-field appearance="outline" class="full">
+                <mat-label translate>login.email</mat-label>
+                <input matInput autofocus (keyup.enter)="submitfmUsername($event)" autocomplete="off"
+                    formControlName="username" required>
+            </mat-form-field>
+            <div style="cursor: pointer;">
+                <a (click)="onForgot()" translate>login.forgot</a>
+            </div>
+        </mat-card-content>
+        <mat-card-content>
+            <div class="subtitle-login" translate>login.subtitleEmail</div>
+        </mat-card-content>
+        <mat-card-content class="card-actions-login">
+            <div class="w-100">
+                <div>
+                    <a [routerLink]="[ '../signup']" mat-flat-button>
+                        <span translate>login.create</span>
+                    </a>
+                </div>
+                <div>
+                    <button mat-flat-button type="submit" color="primary" [disabled]="!fmUsername.valid"
+                        (click)="changeType(true)">
+                        <span translate>login.btn</span>
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</ng-template>
+<ng-template #templateSigninPassword>
+    <mat-card [formGroup]="fmPassword">
+        <mat-progress-bar mode="indeterminate" *ngIf="isLoad"></mat-progress-bar>
+        <mat-card-title class="text-center title-login-logo">
+            <img width="100px" src="https://online.acb.com.vn/acbib/img/logo.jpg">
+        </mat-card-title>
+        <mat-card-content>
+            <div class="title-login text-center" translate>login.welcome</div>
+            <div class="text-center account-login">
+                <mat-chip-list>
+                    <mat-chip class="list-account-login" (click)="changeType(false)">
+                        <div>
+                            <mat-icon>account_circle</mat-icon>
+                            <span>{{ fmUsername.value.username }}</span>
+                            <mat-icon>done</mat-icon>
+                        </div>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+        </mat-card-content>
+        <mat-card-content>
+            <mat-form-field appearance="outline" class="full">
+                <mat-label translate>login.password</mat-label>
+                <input matInput autofocus autocomplete="off" [attr.type]="hide ? 'password' : 'text'"
+                (keyup.enter)="onSubmit($event)" formControlName="password" required>
+                <mat-icon matSuffix style="cursor: pointer" class="icon-18" (click)="hide = !hide">
+                    {{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-content class="card-actions-login">
+            <div class="w-100">
+                <div>
+                    <a [routerLink]="[ '../challenge']" mat-flat-button>
+                        <span translate>login.forgot</span>
+                    </a>
+                </div>
+                <div>
+                    <button mat-flat-button type="submit" color="primary" [disabled]="!fmPassword.valid"
+                        (click)="onSubmit($event)">
+                        <span translate>login.btn</span>
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</ng-template>

@@ -1,0 +1,77 @@
+<header class="page-header navbar-fixed box-shadow">
+    <nav class="w-100">
+        <div class="w-100 justify-content-between d-flex align-items-center">
+            <div class="pull-left text-left">
+                <a mat-button routerLink="./dashboard" class="brand-logo p-0">
+                    <img width="100px" src="https://online.acb.com.vn/acbib/img/logo.jpg" class="online.acb.com.vn">
+                </a>
+                <button mat-icon-button (click)="eventOpened.emit(true)">
+                    <mat-icon>dehaze</mat-icon>
+                </button>
+            </div>
+            <div class="d-none d-md-flex" translate *ngIf="card">
+                <span translate>welcome</span>
+                <a class="nav-link p-0 ml-2" [routerLink]="[ './accounts/info/']">
+                    <span>{{card.cardName}}</span>
+                </a>
+                <span class="ml-2">!</span>
+            </div>
+            <div class="align-items-center d-flex justify-content-between pull-right text-right">
+                <div class="language">
+                    <div class="navbar-item active align-items-center d-flex mr-4 justify-content-between" matTooltip="{{'language.title' | translate }}">
+                        <div [matMenuTriggerFor]="menuCurrentLanguage" class="align-items-center d-flex">
+                            <img *ngIf="translate.store.currentLang == 'vi'" src="../../../assets//icon/icon_vietnam.png" alt="VietNam" class="mr-2" width="30px" height="20px">
+                            <img *ngIf="translate.store.currentLang == 'en'" src="../../../assets//icon/en.jpg" alt="English" class="mr-2" width="30px" height="20px">
+                            <span translate>{{(translate.store.currentLang == 'vi')?'language.vn':'language.en'}}</span>
+                        </div>
+                    </div>
+                    <mat-menu #menuCurrentLanguage="matMenu" class="panelClasstables">
+                        <button mat-menu-item h40 (click)="changeLanguage('vi')">
+                            <img src="../../../assets//icon/icon_vietnam.png" alt="VietNam" class="mr-2" width="30px"
+                                height="20px">
+                            <span translate
+                                [ngClass]="{'text-success font-weight-bold':translate.store.currentLang == 'vi'}">language.vn</span>
+                        </button>
+                        <button mat-menu-item h40 (click)="changeLanguage('en')">
+                            <img src="../../../assets//icon/en.jpg" alt="English" class="mr-2" width="30px"
+                                height="20px">
+                            <span translate
+                                [ngClass]="{'text-success font-weight-bold':translate.store.currentLang == 'en'}">language.en</span>
+                        </button>
+
+                    </mat-menu>
+                </div>
+                <div class="accountButton">
+                    <div class="navbar-item active">
+                        <div [matMenuTriggerFor]="menuCurrentAccount" class="d-flex align-items-center" matTooltipPosition="right" matTooltip="{{'customer.information' | translate }}">
+                            <div avatar [src]="logo" [color]="'white'" [title]="">
+                            </div>
+                            <button *ngIf="profile" mat-button class="d-none d-md-block">
+                                <span>{{profile.fullName}}</span>
+                            </button>
+                        </div>
+                    </div>
+                    <mat-menu #menuCurrentAccount="matMenu" class="panelClasstables">
+                        <button mat-menu-item h40 [routerLink]="[ './accounts/info/']">
+                            <mat-icon>contact_phone</mat-icon>
+                            <span translate>customer.profile</span>
+                        </button>
+                        <button mat-menu-item h40 (click)="onUpdate()">
+                            <mat-icon>edit</mat-icon>
+                            <span translate>customer.update</span>
+                        </button>
+                        <button mat-menu-item h40 (click)="onChangePassword()">
+                            <mat-icon>vpn_key</mat-icon>
+                            <span translate>customer.changePassword</span>
+                        </button>
+                        <mat-divider></mat-divider>
+                        <button mat-menu-item h40 (click)="logOut()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            <span translate>btn.logout</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

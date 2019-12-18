@@ -1,0 +1,38 @@
+<mat-nav-list class='side-nav'>
+    <!-- <mat-form-field class='full'>
+        <input matInput (keyup)="searchMenu()" [(ngModel)]="search.value"
+            placeholder="{{'search.lblList' | translate }}">
+    </mat-form-field> -->
+    <mat-accordion *ngIf="!search.value && search.value.length == 0">
+        <mat-expansion-panel *ngFor="let item of search.data; let i = index" [expanded]="step === i"
+            [hideToggle]="item.hideToggle">
+            <mat-expansion-panel-header (click)="routerLink(item.link)">
+                <mat-icon>{{ item.icon }}</mat-icon>
+                <span style="margin-left:5px">{{ item.title | translate }}</span>
+                <!-- <mat-icon *ngIf="item.data && item.data.length > 0" style="margin-right:5px">expand_more</mat-icon> -->
+            </mat-expansion-panel-header>
+            <mat-nav-list *ngIf="item.data && item.data.length > 0 ">
+                <mat-list-item *ngFor="let list of item.data" (click)="routerLink(list.link)"
+                    (contextmenu)="routerLinkMenu(list.link)">
+                    <mat-icon matListIcon>keyboard_arrow_right</mat-icon>
+                    <p matLine style="margin-left: -15px;">{{ list.title | translate }}</p>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-nav-list *ngIf="search.value && search.value.length > 0">
+        <mat-list-item *ngFor="let list of search.data" (click)="routerLink(list.link)"
+            (contextmenu)="routerLinkMenu(list.link)">
+            <mat-icon matListIcon>search</mat-icon>
+            <p matLine style="margin-left: -15px;">{{ list.title | translate }}</p>
+        </mat-list-item>
+        <mat-list-item *ngIf="search.data.length > 0">
+            <p matLine class="text-center" style="font-weight: bold;">
+                {{'search.result' | translate : {length : search.data.length } }}</p>
+        </mat-list-item>
+        <mat-list-item *ngIf="search.data.length <= 0" onclick="help(-2)">
+            <mat-icon matListIcon>help</mat-icon>
+            <p matLine style="margin-left: -15px;">{{'search.message' | translate : {search : search.value } }}</p>
+        </mat-list-item>
+    </mat-nav-list>
+</mat-nav-list>
